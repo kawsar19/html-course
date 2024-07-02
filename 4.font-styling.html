@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Styling Control</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+       body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.controls {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+.text-area {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Text Styling Control</h1>
+        <div class="controls">
+            <label>
+                Font Size: <span id="font-size-value">16</span>px
+                <input type="range" id="font-size-slider" min="10" max="50" value="16">
+            </label>
+            <label>
+                Padding: <span id="padding-value">10</span>px
+                <input type="range" id="padding-slider" min="0" max="50" value="10">
+            </label>
+            <label>
+                Line Height: <span id="line-height-value">1.5</span>
+                <input type="range" id="line-height-slider" min="1" max="3" step="0.1" value="1.5">
+            </label>
+            <label>
+                Font Weight: <span id="font-weight-value">400</span>
+                <input type="range" id="font-weight-slider" min="100" max="900" step="100" value="400">
+            </label>
+        </div>
+        <div class="text-area" id="text-area">
+            <p>
+                This is a sample text. Use the sliders above to change its font size, padding, line height, and font weight.
+            </p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script>
+       document.addEventListener('DOMContentLoaded', () => {
+    const fontSizeSlider = document.getElementById('font-size-slider');
+    const paddingSlider = document.getElementById('padding-slider');
+    const lineHeightSlider = document.getElementById('line-height-slider');
+    const fontWeightSlider = document.getElementById('font-weight-slider');
+
+    const fontSizeValue = document.getElementById('font-size-value');
+    const paddingValue = document.getElementById('padding-value');
+    const lineHeightValue = document.getElementById('line-height-value');
+    const fontWeightValue = document.getElementById('font-weight-value');
+
+    const textArea = document.getElementById('text-area');
+
+    fontSizeSlider.addEventListener('input', () => {
+        const fontSize = fontSizeSlider.value;
+        fontSizeValue.textContent = fontSize;
+        textArea.style.fontSize = `${fontSize}px`;
+    });
+
+    paddingSlider.addEventListener('input', () => {
+        const padding = paddingSlider.value;
+        paddingValue.textContent = padding;
+        textArea.style.padding = `${padding}px`;
+    });
+
+    lineHeightSlider.addEventListener('input', () => {
+        const lineHeight = lineHeightSlider.value;
+        lineHeightValue.textContent = lineHeight;
+        textArea.style.lineHeight = lineHeight;
+    });
+
+    fontWeightSlider.addEventListener('input', () => {
+        const fontWeight = fontWeightSlider.value;
+        fontWeightValue.textContent = fontWeight;
+        textArea.style.fontWeight = fontWeight;
+    });
+});
+    </script>
+</body>
+</html>

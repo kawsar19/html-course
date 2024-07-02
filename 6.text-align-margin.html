@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Margin and Text Alignment Control</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="range"] {
+            width: 100%;
+        }
+
+        .text-area {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin: 20px;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .button-group button {
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Margin and Text Alignment Control</h1>
+        <div class="controls">
+            <label>
+                Margin Left: <span id="margin-left-value">20</span>px
+                <input type="range" id="margin-left-slider" min="0" max="100" value="20">
+            </label>
+            <label>
+                Margin Right: <span id="margin-right-value">20</span>px
+                <input type="range" id="margin-right-slider" min="0" max="100" value="20">
+            </label>
+            <label>
+                Margin Top: <span id="margin-top-value">20</span>px
+                <input type="range" id="margin-top-slider" min="0" max="100" value="20">
+            </label>
+            <label>
+                Margin Bottom: <span id="margin-bottom-value">20</span>px
+                <input type="range" id="margin-bottom-slider" min="0" max="100" value="20">
+            </label>
+        </div>
+        <div class="button-group">
+            <button id="align-left">Left</button>
+            <button id="align-center">Center</button>
+            <button id="align-right">Right</button>
+            <button id="align-justify">Justify</button>
+        </div>
+        <div class="text-area" id="text-area">
+            <p>
+                This is a sample text. Use the sliders above to change its margin values. Use the buttons to change text alignment.
+            </p>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const marginLeftSlider = document.getElementById('margin-left-slider');
+            const marginRightSlider = document.getElementById('margin-right-slider');
+            const marginTopSlider = document.getElementById('margin-top-slider');
+            const marginBottomSlider = document.getElementById('margin-bottom-slider');
+
+            const marginLeftValue = document.getElementById('margin-left-value');
+            const marginRightValue = document.getElementById('margin-right-value');
+            const marginTopValue = document.getElementById('margin-top-value');
+            const marginBottomValue = document.getElementById('margin-bottom-value');
+
+            const textArea = document.getElementById('text-area');
+
+            marginLeftSlider.addEventListener('input', () => {
+                const marginLeft = marginLeftSlider.value;
+                marginLeftValue.textContent = marginLeft;
+                textArea.style.marginLeft = `${marginLeft}px`;
+            });
+
+            marginRightSlider.addEventListener('input', () => {
+                const marginRight = marginRightSlider.value;
+                marginRightValue.textContent = marginRight;
+                textArea.style.marginRight = `${marginRight}px`;
+            });
+
+            marginTopSlider.addEventListener('input', () => {
+                const marginTop = marginTopSlider.value;
+                marginTopValue.textContent = marginTop;
+                textArea.style.marginTop = `${marginTop}px`;
+            });
+
+            marginBottomSlider.addEventListener('input', () => {
+                const marginBottom = marginBottomSlider.value;
+                marginBottomValue.textContent = marginBottom;
+                textArea.style.marginBottom = `${marginBottom}px`;
+            });
+
+            const alignLeftButton = document.getElementById('align-left');
+            const alignCenterButton = document.getElementById('align-center');
+            const alignRightButton = document.getElementById('align-right');
+            const alignJustifyButton = document.getElementById('align-justify');
+
+            alignLeftButton.addEventListener('click', () => {
+                textArea.style.textAlign = 'left';
+            });
+
+            alignCenterButton.addEventListener('click', () => {
+                textArea.style.textAlign = 'center';
+            });
+
+            alignRightButton.addEventListener('click', () => {
+                textArea.style.textAlign = 'right';
+            });
+
+            alignJustifyButton.addEventListener('click', () => {
+                textArea.style.textAlign = 'justify';
+            });
+        });
+    </script>
+</body>
+</html>
